@@ -76,6 +76,8 @@ p {
   top: 1rem;
 }
 
+/* Kondenserad header. Tröskel (64 px) och hysteres (12 px) sitter i
+   js/motion.js, se docs/motion-guide.md. Här bara hur den ser ut. */
 .site-header {
   position: sticky;
   top: 0;
@@ -83,6 +85,23 @@ p {
   backdrop-filter: blur(16px);
   background: rgba(20, 17, 14, 0.78);
   border-bottom: 1px solid var(--line);
+  transition: background-color var(--dur-hover) var(--ease-noren);
+}
+
+.site-header.is-condensed {
+  background: rgba(20, 17, 14, 0.96);
+}
+
+.site-header.is-condensed .nav-shell {
+  min-height: 56px;
+}
+
+/* .u-pour målar sin fyllning i ett ::before. Texten i länken är en ren
+   textnod — app.js skriver över textContent vid språkbyte och skulle
+   radera ett omslutande element — så fyllningen läggs bakom texten
+   i stället för att texten lyfts ovanför den. */
+.nav-cta.u-pour::before {
+  z-index: -1;
 }
 
 .nav-shell {
@@ -93,6 +112,7 @@ p {
   justify-content: space-between;
   gap: 1rem;
   min-height: 72px;
+  transition: min-height var(--dur-hover) var(--ease-noren);
 }
 
 .brand {

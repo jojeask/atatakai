@@ -1,0 +1,264 @@
+/*
+  Atatakai — rörelselager / motion layer.
+
+  Detta ark ändrar ingenting i sig. Det definierar tokens, keyframes och
+  opt-in-klasser. En animation syns först när markup får rätt klass eller
+  attribut (.is-condensed, [data-reveal], .u-lift ...). Enda undantaget är
+  reduced-motion-blocket längst ned, som medvetet stänger av scroll-beteende
+  och animationer för besökare som bett om det.
+
+  Specen som hör till: docs/motion-guide.md
+*/
+
+:root {
+  /* Fem tider täcker hela sajten. */
+  --dur-tap: 120ms; /* knapptryck */
+  --dur-hover: 180ms; /* hover, fokus, flikbyte */
+  --dur-card: 320ms; /* kort som lyfter, panel som öppnas */
+  --dur-reveal: 560ms; /* scroll-reveal, penseldrag */
+  --dur-entrance: 900ms; /* noren-entrén, en gång per besök */
+  --amb-drift: 20s; /* ånga och långsam bildrörelse */
+
+  /* Tre kurvor. Ingen bounce, ingen elastic. */
+  --ease-noren: cubic-bezier(0.22, 0.61, 0.36, 1); /* anländer och lägger sig */
+  --ease-ink: cubic-bezier(0.65, 0, 0.35, 1); /* penselns tryck */
+  --ease-shoji: cubic-bezier(0.4, 0, 0.2, 1); /* skjutdörr */
+
+  --stagger: 90ms; /* mellan syskon i en reveal */
+}
+
+/* ---------------------------------------------------------------
+   Keyframes. Namngivna här, används av komponenterna.
+   --------------------------------------------------------------- */
+
+@keyframes noren-lift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-112%);
+  }
+}
+
+@keyframes line-rise {
+  from {
+    transform: translateY(112%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes ink-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.09) translate(-1.4%, -1%);
+  }
+}
+
+@keyframes steam-drift {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scaleX(0.7) skewX(0deg);
+  }
+  22% {
+    opacity: 0.85;
+  }
+  60% {
+    opacity: 0.5;
+    transform: translateY(-34px) scaleX(1.25) skewX(7deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-74px) scaleX(1.6) skewX(-6deg);
+  }
+}
+
+@keyframes water-ring {
+  from {
+    opacity: 0.9;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 0;
+    transform: scale(5.4);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Opt-in-klasser. Inert tills markup använder dem.
+   --------------------------------------------------------------- */
+
+/* Sätt .has-motion på <html> från JS. Utan den syns allt innehåll
+   direkt, vilket är precis vad vi vill om JS aldrig laddar. */
+.has-motion [data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity var(--dur-reveal) var(--ease-noren),
+    transform var(--dur-reveal) var(--ease-noren);
+}
+
+.has-motion [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Syskon i ett rutnät kommer in i tur och ordning, max sex. */
+.has-motion [data-reveal-group] > *:nth-child(1) {
+  transition-delay: 0ms;
+}
+.has-motion [data-reveal-group] > *:nth-child(2) {
+  transition-delay: var(--stagger);
+}
+.has-motion [data-reveal-group] > *:nth-child(3) {
+  transition-delay: calc(var(--stagger) * 2);
+}
+.has-motion [data-reveal-group] > *:nth-child(4) {
+  transition-delay: calc(var(--stagger) * 3);
+}
+.has-motion [data-reveal-group] > *:nth-child(5) {
+  transition-delay: calc(var(--stagger) * 4);
+}
+.has-motion [data-reveal-group] > *:nth-child(6) {
+  transition-delay: calc(var(--stagger) * 5);
+}
+
+/* Kort som lyfter. Skuggan ligger i ett eget lager så att
+   box-shadow aldrig animeras. */
+.u-lift {
+  position: relative;
+  transition: transform var(--dur-card) var(--ease-noren);
+}
+
+.u-lift::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-card) var(--ease-noren);
+}
+
+.u-lift:hover,
+.u-lift:focus-within {
+  transform: translateY(-7px);
+}
+
+.u-lift:hover::after,
+.u-lift:focus-within::after {
+  opacity: 1;
+}
+
+/* Penseldrag under en länk. Avsmalnande i båda ändar via clip-path. */
+.u-stroke {
+  position: relative;
+}
+
+.u-stroke::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 4px;
+  background: var(--accent-2);
+  clip-path: polygon(
+    0 40%,
+    6% 8%,
+    22% 22%,
+    48% 4%,
+    74% 24%,
+    92% 10%,
+    100% 46%,
+    96% 92%,
+    72% 72%,
+    46% 96%,
+    24% 74%,
+    7% 94%
+  );
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-hover) var(--ease-ink);
+}
+
+.u-stroke:hover::after,
+.u-stroke:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Aktuell sida/flik: draget ligger kvar, dämpat, så att hover
+   fortfarande läses som en förändring. */
+.u-stroke.is-active::after {
+  transform: scaleX(1);
+  opacity: 0.55;
+}
+
+/* Primärknapp som fylls underifrån, som när man häller upp. */
+.u-pour {
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--dur-tap) var(--ease-shoji);
+}
+
+.u-pour > * {
+  position: relative;
+  z-index: 2;
+}
+
+.u-pour::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform var(--dur-card) var(--ease-noren);
+}
+
+.u-pour:hover::before,
+.u-pour:focus-visible::before {
+  transform: scaleY(1);
+}
+
+.u-pour:active {
+  transform: scale(0.975);
+}
+
+/* ---------------------------------------------------------------
+   Respektera systeminställningen. Detta block är avsiktligt
+   aggressivt: sidan ska landa färdig, inte frysa halvvägs.
+   --------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .has-motion [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

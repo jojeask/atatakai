@@ -14,6 +14,8 @@ Open `index.html` in a browser. There is nothing to install or compile.
 | `index.html` | The whole page. Swedish is the default; English lives in `js/app.js`. |
 | `css/styles.css` | Layout and design. Brand colours are the variables at the top. |
 | `css/fonts.css` | Self-hosted Google Fonts (generated — see GDPR below). |
+| `css/motion.css` | Animation tokens, keyframes and opt-in classes. Inert until markup uses them. |
+| `docs/motion-guide.md` | How animation should work on the site, component by component. |
 | `js/app.js` | Opening hours, Swedish/English text, menu tabs, map consent, booking form. |
 | `img/` | Logo, share image and icon, cropped from the restaurant's logo. |
 | `fonts/` | Font files, so no visitor data goes to Google. |

@@ -1,0 +1,26 @@
+---
+description: Animation and motion rules for the Atatakai site — read before adding any transition, hover state, scroll reveal or keyframe.
+globs: ["css/*.css", "js/*.js", "index.html"]
+alwaysApply: false
+---
+
+Full spec: `docs/motion-guide.md`. Tokens: `css/motion.css`. Read the guide before
+writing motion code — these are the rules it will hold you to.
+
+- Use the tokens. Never a literal duration or `cubic-bezier()` in a component:
+  `--dur-tap` 120ms, `--dur-hover` 180ms, `--dur-card` 320ms, `--dur-reveal` 560ms,
+  `--dur-entrance` 900ms, `--amb-drift` 20s; `--ease-noren`, `--ease-ink`, `--ease-shoji`.
+- No bounce, no spring, no overshoot. No `ease-in-out` improvised on the spot.
+- Animate `transform`, `opacity`, `clip-path` only. Never `top`, `width` or `box-shadow`
+  — layer a shadow pseudo-element and fade it, the way `.u-lift` does.
+- Two moving elements on screen at a time. Only steam and the photo drift may loop.
+- Scroll reveals: `[data-reveal]`, `IntersectionObserver`, unobserve after the first hit,
+  never re-animate on scroll-back, never on the address, hours or booking form.
+- Content must be visible without JS. The hidden state is scoped to `.has-motion`, which
+  JS sets on `<html>`. Do not remove that scoping.
+- `prefers-reduced-motion` is handled globally at the bottom of `css/motion.css`. If you
+  add a loop or a JS-driven animation, check the query in JS too.
+- Reuse the brand variables from `css/styles.css`: `--accent` for fills, `--accent-2` for
+  thin strokes. Do not introduce new colours for motion.
+- This is a static site with no build step. Plain CSS and vanilla JS — do not add a
+  motion library, and do not reach for GSAP.
