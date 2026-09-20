@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Atatakai i Hörby serverar autentisk japansk och koreansk mat från ett öppet kök. Sushi, ramen och koreansk kyckling — lunch, middag eller take away."
+    />
+    <title>Atatakai — Japansk &amp; koreansk restaurang i Hörby</title>
+
+    <!--
+      DOMÄN: byt ut https://atatakai.example.se mot den riktiga adressen på
+      tre ställen här nedan (canonical, og:url, og:image) samt i sitemap.xml
+      och robots.txt när domänen är köpt.
+    -->
+    <link rel="canonical" href="https://atatakai.example.se/" />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:locale" content="sv_SE" />
+    <meta property="og:site_name" content="Atatakai" />
+    <meta property="og:title" content="Atatakai — Japansk &amp; koreansk restaurang i Hörby" />
+    <meta
+      property="og:description"
+      content="Autentisk japansk och koreansk mat från vårt öppna kök. Sushi, ramen och koreansk kyckling — lunch, middag eller take away."
+    />
+    <meta property="og:url" content="https://atatakai.example.se/" />
+    <meta property="og:image" content="https://atatakai.example.se/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Atatakais logotyp" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="img/icon.png" />
+    <link rel="apple-touch-icon" href="img/icon.png" />
+    <link rel="preload" href="fonts/Outfit-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/CormorantGaramond-600-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Atatakai",
+        "servesCuisine": ["Japanese", "Korean"],
+        "telephone": "+46739050879",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Storgatan 5",
+          "postalCode": "242 31",
+          "addressLocality": "Hörby",
+          "addressCountry": "SE"
+        },
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "11:00", "closes": "20:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "15:00", "closes": "20:00" }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="skip">Hoppa till innehåll</a>
+
+    <header class="site-header" id="top">
+      <div class="nav-shell">
+        <a class="brand" href="#top" aria-label="Atatakai">
+          <img class="brand-mark" src="img/logo.png" alt="" width="572" height="802" />
+          <span class="brand-text">
+            <strong>Atatakai</strong>
+            <small data-i18n="brand.sub">Hörby</small>
+          </span>
+        </a>
+
+        <nav class="primary-nav" id="primary-nav" aria-label="Huvudmeny">
+          <a href="#meny" data-i18n="nav.menu">Meny</a>
+          <a href="#om" data-i18n="nav.about">Om oss</a>
+          <a href="#omdomen" data-i18n="nav.reviews">Omdömen</a>
+          <a href="#besok" data-i18n="nav.visit">Besök</a>
+          <a href="#boka" class="nav-cta" data-i18n="nav.book">Boka bord</a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="lang-switch" role="group" aria-label="Language">
+            <button type="button" data-lang="sv" class="is-active">SV</button>
+            <button type="button" data-lang="en">EN</button>
+          </div>
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+            data-i18n-aria="nav.toggle"
+            aria-label="Öppna meny"
+          >
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <div class="hero-media" aria-hidden="true">
+          <img
+            src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1800&q=80"
+            alt=""
+          />
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Japanskt &amp; koreanskt kök i Hörby</p>
+          <h1>
+            <span class="jp">温かい</span>
+            <span data-i18n="hero.title">Varm, nylagad mat — som hemma.</span>
+          </h1>
+          <p class="lede" data-i18n="hero.lede">
+            Autentisk japansk och koreansk mat, tillagad på plats i vårt öppna
+            kök. Perfekt för lunch, middag eller take away.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#boka" data-i18n="hero.cta1">Boka bord</a>
+            <a class="btn btn-ghost" href="#meny" data-i18n="hero.cta2">Se menyn</a>
+          </div>
+        </div>
+        <dl class="hero-meta">
+          <div>
+            <dt data-i18n="hero.meta1.label">Öppet idag</dt>
+            <dd id="open-today">11:00–20:00</dd>
+          </div>
+          <div>
+            <dt data-i18n="hero.meta2.label">Adress</dt>
+            <dd>Storgatan 5, Hörby</dd>
+          </div>
+          <div>
+            <dt data-i18n="hero.meta3.label">Bokning &amp; take away</dt>
+            <dd><a href="tel:+46739050879">073-905 08 79</a></dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="intro" id="om">
+        <div class="section-grid">
+          <div>
+            <p class="eyebrow" data-i18n="about.eyebrow">Välkomna till Atatakai</p>
+            <h2 data-i18n="about.title">Atatakai betyder varm.</h2>
+            <p data-i18n="about.p1">
+              Atatakai betyder varm, nylagad mat som hemma. Vi erbjuder autentisk
+              japansk och koreansk mat, tillagad på plats i vårt öppna kök där du
+              kan se maten lagas framför dig.
+            </p>
+            <p data-i18n="about.p2">
+              Hos oss möts du av en varm atmosfär, fräscha råvaror och smaker som
+              känns hemlagade. Perfekt för lunch, middag eller take away.
+            </p>
+            <ul class="facts">
+              <li data-i18n="about.f1">Misosoppa ingår till maten</li>
+              <li data-i18n="about.f2">Vegetariska alternativ, även sushi</li>
+              <li data-i18n="about.f3">Plats för sällskap på runt 30 personer</li>
+              <li data-i18n="about.f4">Tillgänglighetsanpassat, med toalett för rullstolsanvändare</li>
+            </ul>
+          </div>
+          <figure class="portrait">
+            <img
+              src="https://images.unsplash.com/photo-1607301405390-d831c242f59b?auto=format&fit=crop&w=1200&q=80"
+              alt=""
+            />
+            <figcaption data-i18n="about.caption">Öppet kök — se maten lagas framför dig.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="menu" id="meny">
+        <div class="section-head">
+          <p class="eyebrow" data-i18n="menu.eyebrow">Meny</p>
+          <h2 data-i18n="menu.title">Japanska och koreanska favoriter.</h2>
+          <p data-i18n="menu.lede">
+            En stor meny med något för alla. Här är några av gästernas
+            favoriter — misosoppa ingår. Berätta gärna om allergier när du
+            beställer.
+          </p>
+        </div>
+
+        <div class="menu-tabs" role="tablist" aria-label="Menykategorier">
+          <button type="button" role="tab" aria-selected="true" data-tab="sushi" data-i18n="menu.tab.sushi">Sushi</button>
+          <button type="button" role="tab" aria-selected="false" data-tab="ramen" data-i18n="menu.tab.ramen">Ramen</button>
+          <button type="button" role="tab" aria-selected="false" data-tab="korea" data-i18n="menu.tab.korea">Koreanskt</button>
+        </div>
+
+        <div class="menu-panels">
+          <article class="menu-panel is-active" id="panel-sushi" role="tabpanel">
+            <ul class="menu-list">
+              <li>
+                <div>
+                  <h3>Sushi</h3>
+                  <p data-i18n="menu.s1.desc">Nylagad sushi med fräscha råvaror, gjord på plats.</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3 data-i18n="menu.s2.title">Vegetarisk sushi</h3>
+                  <p data-i18n="menu.s2.desc">Välgjord och generös — för dig som inte äter fisk.</p>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="menu-panel" id="panel-ramen" role="tabpanel" hidden>
+            <ul class="menu-list">
+              <li>
+                <div>
+                  <h3>Ramen</h3>
+                  <p data-i18n="menu.r1.desc">En varm skål med buljong och nudlar, lagad i vårt öppna kök.</p>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="menu-panel" id="panel-korea" role="tabpanel" hidden>
+            <ul class="menu-list">
+              <li>
+                <div>
+                  <h3>Korean fried chicken</h3>
+                  <p data-i18n="menu.k1.desc">Krispig friterad kyckling på koreanskt vis.</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Yakiniku</h3>
+                  <p data-i18n="menu.k2.desc">Grillat, marinerat kött — gott på plats eller som take away.</p>
+                </div>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="gallery" aria-label="Stämning">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=1000&q=80" alt="" />
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1000&q=80" alt="" />
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1000&q=80" alt="" />
+        </figure>
+      </section>
+
+      <section class="reviews" id="omdomen">
+        <div class="section-head">
+          <p class="eyebrow" data-i18n="reviews.eyebrow">Omdömen</p>
+          <h2 data-i18n="reviews.title">Vad våra gäster säger.</h2>
+        </div>
+        <ul class="review-grid">
+          <li class="review">
+            <p class="stars" aria-label="5 av 5">★★★★★</p>
+            <blockquote>En restaurang som platsar i vilken storstad som helst. TOPPbra!</blockquote>
+            <p class="review-author">Krayem A.</p>
+          </li>
+          <li class="review">
+            <p class="stars" aria-label="5 av 5">★★★★★</p>
+            <blockquote>Fin, fräsch restaurang med god mat och trevlig hjälpsam personal! Hit åker vi igen.</blockquote>
+            <p class="review-author">Camilla O.</p>
+          </li>
+          <li class="review">
+            <p class="stars" aria-label="5 av 5">★★★★★</p>
+            <blockquote>Jättegod ramen, väldigt trevlig personal och mysig atmosfär!</blockquote>
+            <p class="review-author">Maggan J.</p>
+          </li>
+          <li class="review">
+            <p class="stars" aria-label="5 av 5">★★★★★</p>
+            <blockquote>Glad för ny restaurang i byn! Fint lokal och inredning. Maten är god med fräscha råvaror, och det finns en stor meny att välja från.</blockquote>
+            <p class="review-author">Rickards Garage</p>
+          </li>
+          <li class="review">
+            <p class="stars" aria-label="5 av 5">★★★★★</p>
+            <blockquote>Bra sushi, särskilt för att vara i Mittskåne. Jag är allergisk mot fisk (och vegetarian) så jag kör alltid vegetarisk sushi, den är välgjord …</blockquote>
+            <p class="review-author">Giang B.</p>
+          </li>
+          <li class="review">
+            <p class="stars" aria-label="5 av 5">★★★★★</p>
+            <blockquote>Alltid bra service, väldigt trevlig personal och supergod sushi!</blockquote>
+            <p class="review-author">Kjell L.</p>
+          </li>
+        </ul>
+        <p>
+          <a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Atatakai+Storgatan+5+H%C3%B6rby" target="_blank" rel="noreferrer">
+            <span data-i18n="reviews.more">Läs fler omdömen på Google</span>
+          </a>
+        </p>
+      </section>
+
+      <section class="visit" id="besok">
+        <div class="visit-copy">
+          <p class="eyebrow" data-i18n="visit.eyebrow">Hitta hit</p>
+          <h2 data-i18n="visit.title">Storgatan 5 i Hörby.</h2>
+          <p data-i18n="visit.p">
+            Välkommen in för lunch eller middag — eller ring och beställ take
+            away på 073-905 08 79.
+          </p>
+          <ul class="hours" id="hours-list"></ul>
+          <p>
+            <a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Atatakai+Storgatan+5+H%C3%B6rby" target="_blank" rel="noreferrer">
+              <span data-i18n="visit.map">Öppna i Google Maps</span>
+            </a>
+          </p>
+        </div>
+        <!--
+          Kartan laddas först när besökaren klickar. Annars sätter Google
+          kakor direkt vid sidladdning, vilket kräver samtycke enligt GDPR.
+        -->
+        <div class="map-frame" id="map-frame">
+          <button class="map-consent" type="button" id="map-consent">
+            <span class="map-consent-title" data-i18n="map.title">Visa karta</span>
+            <span class="map-consent-note" data-i18n="map.note">
+              Kartan laddas från Google Maps. Genom att visa den godkänner du
+              att Google kan sätta kakor.
+            </span>
+            <span class="map-consent-cta" data-i18n="map.cta">Ladda kartan</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="book" id="boka">
+        <div class="book-card">
+          <div>
+            <p class="eyebrow" data-i18n="book.eyebrow">Bokning</p>
+            <h2 data-i18n="book.title">Sitt ner hos oss.</h2>
+            <p data-i18n="book.p">
+              Boka bord för upp till åtta personer här. Firar ni något större?
+              Lokalen rymmer runt 30 gäster — ring oss på 073-905 08 79 så
+              ordnar vi det.
+            </p>
+            <p class="fineprint" data-i18n="book.note">
+              Du får en bekräftelse direkt. Formuläret sparar bokningen lokalt
+              tills ett bokningssystem kopplas in.
+            </p>
+          </div>
+          <form id="booking-form" novalidate>
+            <label>
+              <span data-i18n="form.name">Namn</span>
+              <input name="name" type="text" autocomplete="name" required />
+            </label>
+            <label>
+              <span data-i18n="form.email">E-post</span>
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+            <div class="form-row">
+              <label>
+                <span data-i18n="form.date">Datum</span>
+                <input name="date" type="date" required />
+              </label>
+              <label>
+                <span data-i18n="form.time">Tid</span>
+                <select name="time" required>
+                  <option value="11:00">11:00</option>
+                  <option value="11:30">11:30</option>
+                  <option value="12:00">12:00</option>
+                  <option value="12:30">12:30</option>
+                  <option value="13:00">13:00</option>
+                  <option value="13:30">13:30</option>
+                  <option value="14:00">14:00</option>
+                  <option value="14:30">14:30</option>
+                  <option value="15:00">15:00</option>
+                  <option value="15:30">15:30</option>
+                  <option value="16:00">16:00</option>
+                  <option value="16:30">16:30</option>
+                  <option value="17:00">17:00</option>
+                  <option value="17:30">17:30</option>
+                  <option value="18:00" selected>18:00</option>
+                  <option value="18:30">18:30</option>
+                  <option value="19:00">19:00</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              <span data-i18n="form.guests">Gäster</span>
+              <select name="guests" required>
+                <option>1</option>
+                <option selected>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="form.notes">Allergier eller önskemål</span>
+              <textarea name="notes" rows="3"></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit" data-i18n="form.submit">Skicka förfrågan</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Atatakai</strong>
+        <p data-i18n="footer.tag">Japansk &amp; koreansk restaurang i Hörby</p>
+      </div>
+      <div>
+        <p>Storgatan 5<br />242 31 Hörby</p>
+        <p><a href="tel:+46739050879">073-905 08 79</a></p>
+      </div>
+      <p class="copyright">© <span id="year"></span> Atatakai</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
