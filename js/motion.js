@@ -87,8 +87,47 @@
     });
   }
 
+  function setupScrollReveal() {
+    var targets = document.querySelectorAll("[data-reveal]");
+    if (!targets.length) return;
+
+    function reveal(el) {
+      el.classList.add("is-revealed");
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      Array.prototype.forEach.call(targets, reveal);
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          reveal(entry.target);
+          // Sluta titta: ett avsnitt animeras fram en gång, aldrig igen
+          // när läsaren scrollar tillbaka upp.
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.15 }
+    );
+
+    Array.prototype.forEach.call(targets, function (el) {
+      // Det som redan syns när sidan laddas ska stå där, inte vänta
+      // på en scroll som aldrig kommer.
+      var box = el.getBoundingClientRect();
+      if (box.top < window.innerHeight && box.bottom > 0) {
+        reveal(el);
+      } else {
+        observer.observe(el);
+      }
+    });
+  }
+
   setupHeaderCondense();
   setupNavHighlight();
+  setupScrollReveal();
 
   if (onFrame.length) {
     window.addEventListener("scroll", requestTick, { passive: true });

@@ -57,6 +57,12 @@
         ]
       }
     </script>
+  <!-- Sätts här, före <body>, så att innehållet aldrig hinner blinka
+       fram innan reveal-klasserna döljer det. Utan JS sätts den aldrig,
+       och då syns allt direkt — vilket är det vi vill. -->
+    <script>
+      document.documentElement.classList.add("has-motion");
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">Hoppa till innehåll</a>
@@ -235,14 +241,14 @@
         </div>
       </section>
 
-      <section class="gallery" aria-label="Stämning">
-        <figure>
+      <section class="gallery" aria-label="Stämning" data-reveal-group>
+        <figure data-reveal>
           <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=1000&q=80" alt="" />
         </figure>
-        <figure>
+        <figure data-reveal>
           <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1000&q=80" alt="" />
         </figure>
-        <figure>
+        <figure data-reveal>
           <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1000&q=80" alt="" />
         </figure>
       </section>
@@ -252,33 +258,33 @@
           <p class="eyebrow" data-i18n="reviews.eyebrow">Omdömen</p>
           <h2 data-i18n="reviews.title">Vad våra gäster säger.</h2>
         </div>
-        <ul class="review-grid">
-          <li class="review">
+        <ul class="review-grid" data-reveal-group>
+          <li class="review" data-reveal>
             <p class="stars" aria-label="5 av 5">★★★★★</p>
             <blockquote>En restaurang som platsar i vilken storstad som helst. TOPPbra!</blockquote>
             <p class="review-author">Krayem A.</p>
           </li>
-          <li class="review">
+          <li class="review" data-reveal>
             <p class="stars" aria-label="5 av 5">★★★★★</p>
             <blockquote>Fin, fräsch restaurang med god mat och trevlig hjälpsam personal! Hit åker vi igen.</blockquote>
             <p class="review-author">Camilla O.</p>
           </li>
-          <li class="review">
+          <li class="review" data-reveal>
             <p class="stars" aria-label="5 av 5">★★★★★</p>
             <blockquote>Jättegod ramen, väldigt trevlig personal och mysig atmosfär!</blockquote>
             <p class="review-author">Maggan J.</p>
           </li>
-          <li class="review">
+          <li class="review" data-reveal>
             <p class="stars" aria-label="5 av 5">★★★★★</p>
             <blockquote>Glad för ny restaurang i byn! Fint lokal och inredning. Maten är god med fräscha råvaror, och det finns en stor meny att välja från.</blockquote>
             <p class="review-author">Rickards Garage</p>
           </li>
-          <li class="review">
+          <li class="review" data-reveal>
             <p class="stars" aria-label="5 av 5">★★★★★</p>
             <blockquote>Bra sushi, särskilt för att vara i Mittskåne. Jag är allergisk mot fisk (och vegetarian) så jag kör alltid vegetarisk sushi, den är välgjord …</blockquote>
             <p class="review-author">Giang B.</p>
           </li>
-          <li class="review">
+          <li class="review" data-reveal>
             <p class="stars" aria-label="5 av 5">★★★★★</p>
             <blockquote>Alltid bra service, väldigt trevlig personal och supergod sushi!</blockquote>
             <p class="review-author">Kjell L.</p>
