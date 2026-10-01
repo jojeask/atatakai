@@ -79,8 +79,12 @@ p {
 /* Kondenserad header. Tröskel (64 px) och hysteres (12 px) sitter i
    js/motion.js, se docs/motion-guide.md. Här bara hur den ser ut. */
 .site-header {
-  position: sticky;
+  /* Fast, inte sticky: en sticky header ligger kvar i flödet, och då
+     hade hopkrympningen dragit upp allt innehåll under den 16 px. */
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
   backdrop-filter: blur(16px);
   background: rgba(20, 17, 14, 0.78);
@@ -102,6 +106,13 @@ p {
    i stället för att texten lyfts ovanför den. */
 .nav-cta.u-pour::before {
   z-index: -1;
+}
+
+/* Headern ligger utanför flödet, så ankarlänkar behöver egen
+   marginal för att målet inte ska hamna bakom den. */
+main[id],
+section[id] {
+  scroll-margin-top: 88px;
 }
 
 .nav-shell {
@@ -672,6 +683,20 @@ textarea {
 
   .primary-nav.is-open {
     display: flex;
+  }
+
+  /* I rullgardinen fyller länkarna hela bredden, och då blir
+     penseldraget en linje tvärs över skärmen. Touch har ingen hover
+     att visa ändå, så draget stryks här — raden behåller sin fulla
+     bredd som träffyta. */
+  .primary-nav a.u-stroke::after {
+    display: none;
+  }
+
+  /* Rullgardinen hänger under headern och måste följa med när
+     den krymper. */
+  .site-header.is-condensed .primary-nav {
+    top: 56px;
   }
 
   .hero-meta,
